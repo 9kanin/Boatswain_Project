@@ -1,0 +1,56 @@
+STREAMING_CHUNK:Configuring workflow triggers...
+
+name: Daily Market Scraper
+
+on:
+schedule:
+# ตั้งเวลารันอัตโนมัติ (เป็นเวลา UTC)
+# 23:00 UTC คือเวลา 06:00 น. เช้าเวลาไทย
+- cron: '0 23 * * *'
+
+อนุญาตให้เรากดปุ่มรันด้วยมือ (Manual) เพื่อทดสอบได้
+
+workflow_dispatch:
+
+STREAMING_CHUNK:Setting repository permissions...
+
+permissions:
+
+สำคัญมาก: อนุญาตให้บอทเขียนไฟล์ทับลงใน Repository ของเราได้
+
+contents: write
+
+STREAMING_CHUNK:Defining execution jobs...
+
+jobs:
+build:
+runs-on: ubuntu-latest # ใช้เซิร์ฟเวอร์ Linux ฟรีของ GitHub
+
+steps:
+  # 1. ดึงโค้ดล่าสุดจากโปรเจกต์ของเรา
+  - name: Checkout Repository
+    uses: actions/checkout@v3
+
+  # 2. ติดตั้ง Python ลงบนเซิร์ฟเวอร์
+  - name: Setup Python
+    uses: actions/setup-python@v4
+    with:
+      python-version: '3.10'
+
+  # 3. ติดตั้งไลบรารีตามไฟล์ requirements.txt
+  - name: Install Dependencies
+    run: pip install -r requirements.txt
+
+  # 4. สั่งรันไฟล์สายลับของเรา (scraper.py)
+  - name: Run Scraper
+    run: python scraper.py
+
+  # STREAMING_CHUNK:Committing generated data...
+  # 5. นำไฟล์ ftmo_time.json ที่ได้ ยัดกลับเข้าโปรเจกต์
+  - name: Commit and Push JSON
+    run: |
+      git config --global user.name "Market Bot"
+      git config --global user.email "bot@example.com"
+      git add ftmo_time.json
+      git commit -m "Update market schedule [skip ci]" || echo "No changes to commit"
+      git push
