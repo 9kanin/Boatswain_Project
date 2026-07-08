@@ -16,13 +16,13 @@ jobs:
   build:
     runs-on: ubuntu-latest # ใช้เซิร์ฟเวอร์ Linux ฟรีของ GitHub
     steps:
-      # 1. ดึงโค้ดล่าสุดจากโปรเจกต์ของเรา
+      # 1. ดึงโค้ดล่าสุดจากโปรเจกต์ของเรา (อัปเดตเป็น v4 เพื่อแก้แจ้งเตือน)
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      # 2. ติดตั้ง Python ลงบนเซิร์ฟเวอร์
+      # 2. ติดตั้ง Python ลงบนเซิร์ฟเวอร์ (อัปเดตเป็น v5 เพื่อแก้แจ้งเตือน)
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
