@@ -1,20 +1,19 @@
 {
-    "valid_for_date": "2026-06-23",
+    "valid_for_date": "2026-07-08",
     "symbol_keyword": [
         "XAU",
         "GOLD",
-        "XAUUSD"
+        "USD",
+        "SPX",
+        "US500"
     ],
     "status": "normal",
     "close_time_utc": "",
+    "event_name": "None",
     "sources": {
-        "ftmo": {
+        "cme_us": {
             "status": "normal",
-            "close_time_utc": ""
-        },
-        "cme": {
-            "status": "normal",
-            "close_time_utc": ""
+            "event": "None"
         }
     }
 }
