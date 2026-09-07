@@ -1,5 +1,5 @@
 {
-    "valid_for_date": "2026-09-06",
+    "valid_for_date": "2026-09-07",
     "symbol_keyword": [
         "XAU",
         "GOLD",
@@ -7,13 +7,13 @@
         "SPX",
         "US500"
     ],
-    "status": "normal",
-    "close_time_utc": "",
-    "event_name": "None",
+    "status": "early_close",
+    "close_time_utc": "2026-09-07 17:00:00",
+    "event_name": "Labour Day",
     "sources": {
         "cme_us": {
-            "status": "normal",
-            "event": "None"
+            "status": "early_close",
+            "event": "Labour Day"
         }
     }
 }
